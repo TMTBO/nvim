@@ -61,7 +61,7 @@ set shortmess+=c
 if has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
-else
+ else
   set signcolumn=yes
 endif
 
