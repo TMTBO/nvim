@@ -8,8 +8,9 @@ set relativenumber
 set cursorline
 set hidden 			" Hide buffers when abandoned instead of unload
 set statusline
-set mouse=nv
+set mouse=a
 set modeline
+set nonu
 
 " }}}
 
