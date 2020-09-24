@@ -1,16 +1,17 @@
 " Neovim Settings
 " === 
 
-" General {{{
-
 set number
 set relativenumber
-set cursorline
+"set cursorline
 set hidden 			" Hide buffers when abandoned instead of unload
 set statusline
 set mouse=a
+set selection=exclusive
+set selectmode=mouse,key
 set modeline
-set nonu
+
+colorscheme hybrid
 
 " }}}
 
@@ -65,5 +66,17 @@ if has("patch-8.1.1564")
  else
   set signcolumn=yes
 endif
+
+" }}}
+
+" Powerline {{{
+
+" let g:powerline_pycmd = 'py3'
+" set rtp+=/usr/local/lib/python3.8/site-packages/powerline/bindings/vim
+set laststatus=2
+set showtabline=2
+set noshowmode
+set t_Co =256
+set guifont=Source\ Code\ Pro\ for\ Powerline:h15:cANSI
 
 " }}}
