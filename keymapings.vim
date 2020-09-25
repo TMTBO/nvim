@@ -10,8 +10,19 @@ noremap Q :q<CR>
 noremap <C-q> :qa<CR>
 noremap S :w<CR>
 
+
+inoremap jj <esc>
+:nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <silent> gn :<C-u>tabNext<CR>
+nnoremap <silent> <C-q> :<C-u>:quit!<CR>
+inoremap <silent> <C-q> <Esc>:<C-u>:quit!<CR>
 " }}}
 
+" Terminal {{{
+nmap ;t :bo sp term://zsh\|resize 10<CR>i
+tnoremap <Esc> <C-\><C-n>
+
+" }}}
 " coc {{{
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -136,5 +147,12 @@ function! s:config_easyfuzzymotion(...) abort
 endfunction
 
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion()
+
+" }}}
+
+" fzf {{{
+
+map <leader>f :FZF<CR>
+map <leader>ff :FZF ~<CR>
 
 " }}}

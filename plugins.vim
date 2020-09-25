@@ -26,7 +26,7 @@ Plug 'theniceboy/vim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
-Plug 'theniceboy/eleline.vim'
+" Plug 'theniceboy/eleline.vim'
 Plug 'ojroques/vim-scrollstatus'
 
 " Complete
@@ -39,7 +39,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
+Plug 'junegunn/fzf.vim' " needed for previews
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'antoinemadec/coc-fzf'
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'kevinhwang91/rnvimr'
 " Plug 'airblade/vim-rooter'
@@ -79,6 +82,10 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'm
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
 
+" Others
+
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 " }}}
@@ -87,11 +94,11 @@ call plug#end()
 
 " airline {{{
 
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
+" let g:airline_theme='solarized'
+" let g:airline_solarized_bg='dark'
 let g:airline#extensions#hunks#coc_git = 1
 let g:airline#extensions#branch#format = 1
 
@@ -160,7 +167,7 @@ let g:coc_global_extensions = [
         \ 'coc-vetur',
         \ 'coc-yaml',
         \ 'coc-yank',
-				\ 'coc-git']
+		\ 'coc-git', 'coc-vimlsp']
 
 " }}}
 
@@ -192,6 +199,39 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 nnoremap <LEADER>gl :Agit<CR>
 let g:agit_no_default_mappings = 1
+
+" }}}
+
+" auto-save {{
+
+let g:auto_save = 1 
+let g:auto_save_silent = 1
+
+" }}}
+
+" surround {{{
+
+let g:operator#surround#blocks = {
+    \   '-' : [
+    \       { 'block' : ['(', ')'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['(', ')'] },
+    \       { 'block' : ['[', ']'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['[', ']'] },
+    \       { 'block' : ['{', '}'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['{', '}'] },
+    \       { 'block' : ['<', '>'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['<', '>'] },
+    \       { 'block' : ['"', '"'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['"'] },
+    \       { 'block' : ["'", "'"], 'motionwise' : ['char', 'line', 'block'], 'keys' : ["'"] },
+    \       { 'block' : ['`', '`'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['`'] },
+    \       { 'block' : ['( ', ' )'], 'motionwise' : ['char', 'line', 'block'], 'keys' : [' (', ' )'] },
+    \       { 'block' : ['{ ', ' }'], 'motionwise' : ['char', 'line', 'block'], 'keys' : [' {', ' }'] },
+    \   ],
+    \ }
+
+
+" }}}
+
+" fzf {{{
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+set rtp+=/usr/local/opt/fzf
 
 " }}}
 
